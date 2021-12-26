@@ -9,3 +9,6 @@
     git push -u origin main
 
 ## git 直接提交
+    git add -u
+    git commit -m "message"
+    git push -u origin main
