@@ -1,6 +1,6 @@
 # condition_variable
 ## 1 Brief introduction
-~~~cpp
+```cpp
 #include <condition_variable>
 std::condition_variable cv;
 std::mutex mtx;
@@ -16,4 +16,4 @@ else
     TimeoverFunc();
 
 cv.notify_all()
-~~~
+```

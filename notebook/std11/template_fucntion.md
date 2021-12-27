@@ -1,7 +1,7 @@
 # Template function
 
 ## 1 Brief introduction
-~~~cpp
+```cpp
 template <class T>
 void function(T args)
 
@@ -10,4 +10,4 @@ void print(const T& firstArg, const Types&... args) {
 	std::cout << firstArg << " " << sizeof...(args) << std::endl;
 	print(args...);
 }
-~~~
+```

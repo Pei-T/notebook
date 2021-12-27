@@ -1,5 +1,5 @@
 # std::promise
 ## 1 Brief introduction
-~~~cpp
+```c
 #include <future>
-~~~
+```

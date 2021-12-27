@@ -4,9 +4,9 @@
         模板：template <class Fn, class... Args>
         返回值：future <typename result_of<Fn(Args...)>::type> 
         参数：async(launch policy, Fn&& fn, Args&&...args);
-~~~cpp
+```cpp
 std::async(std::launch::async, func, "Data")
-~~~
+```
 ## 1.1 返回值 
     future <typename result_of<Fn(Args...)>::type> 
     可以使用get、wait、wait_for、wait_until等待执行结束，区别是get可以获得执行的结果。
@@ -24,10 +24,8 @@ std::async(std::launch::async, func, "Data")
 第二个参数接收一个可调用对象(仿函数、lambda表达式、类成员函数、普通函数......)作为参数,并且异步或是同步执行他们。
 
 ## 1.3 例子
-~~~cpp
-// STLasync.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-#include "pch.h"
+```cpp{.line-numbers}
+// STLasync.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结
 #include <iostream>
 #include <string>
 #include <chrono>
@@ -79,4 +77,4 @@ int main() {
 
     return 0;
 }
-~~~
+```

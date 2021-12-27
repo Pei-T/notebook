@@ -1,11 +1,11 @@
 # std::future
 头文件：Defined in header <future>  
 定义
-~~~c++
+```c++
 template< class T > class future;  
 template< class T > class future<T&>;  
 template<> class future<void>;
-~~~
+```
 ## 1 成员函数：
 |||
 |---|---
@@ -23,7 +23,7 @@ wait()返回结果
 |||
 ## 2 例子
 ### 2.1 获取async结果
-~~~c++
+```c++
 // STLasync.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 #include "pch.h"
 #include <iostream>
@@ -78,9 +78,9 @@ int main()
 
     return 0;
 }
-~~~
+```
 ### 2.2 获取thread结果
-~~~c++
+```c++
 #include <iostream>       
 #include <functional>     
 #include <thread>        
@@ -100,4 +100,4 @@ int main ()
     t.join();
     return 0;
 }
-~~~
+```

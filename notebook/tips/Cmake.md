@@ -1,7 +1,7 @@
 # Cmake tips
 
 ## 1 常用命令
-~~~cmake
+```cmake
 cmake_minimum_required(VERSION 2.6) #cmake版本
 set(CXX_FLAGS -g) #设置编译选项
 add_definitions(-DSUBSYS_NAME=LOCAL_SYSMGR) #添加宏
@@ -18,4 +18,4 @@ target_link_libraries(sysmgr
         ${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party/json/libjsoncpp.a
         libpthread.so
 ) #添加三方库
-~~~
+```

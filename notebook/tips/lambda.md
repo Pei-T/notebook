@@ -1,8 +1,8 @@
 # Lambda
 ## 1 外部变量访问方式说明符
-~~~cpp
+```cpp
 auto f = [a] (int)->void { cout << a << endl; return;};
-~~~ 
+``` 
 
 Lambda参数表：
 |||||
