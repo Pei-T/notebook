@@ -5,12 +5,12 @@ A-->C;
 B-->D;
 C-->D;
 ```
-<!-- ~~~mermaid
+~~~mermaid
 pie  
 "喜欢宅" : 15
 "天气太热或太冷" : 20
 "穷" : 500
-~~~ -->
+~~~
 
 ~~~mermaid
 sequenceDiagram
@@ -26,5 +26,23 @@ end
 ~~~mermaid
 classDiagram
     Animal <|-- Duck
-
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+      +String beakColor
+      +swim()
+      +quack()
+    }
+    class Fish{
+      -int sizeInFeet
+      -canEat()
+    }
+    class Zebra{
+      +bool is_wild
+      +run()
+    }
 ~~~
