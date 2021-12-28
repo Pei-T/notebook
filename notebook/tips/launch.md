@@ -2,7 +2,7 @@
 
 ## 1 前提
 Ubuntu系统，且改系统与板子能ping通。
-## 2 json实例
+## 2 json
 ```json
 {
     "version": "0.2.0",
