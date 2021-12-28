@@ -9,6 +9,8 @@ include_directories(./include) #添加头文件目录
 file(GLOB_RECURSE local_sys_statemachine_SRCS 
     ../centre_sysmgr/src/*.cpp 
     ./*.cpp) #添加源文件
+list(REMOVE_ITEM <list> <value> [<value> ...]) #排除源文件
+list(REMOVE_ITEM ${local_sys_statemachine_SRCS} xxx.cpp) #排除源文件
 add_executable(local_sysmgr ${local_sys_statemachine_SRCS}) #编译可执行
 add_library(sysmgr SHARED ${SOURCES}) #编译.so 
 target_link_libraries(sysmgr
