@@ -35,3 +35,13 @@ fi
 ```sh
 cat /etc/ld.so.conf|grep /lib/sensorlib|wc -l
 ```
+
+## 5 Function
+
+## 6 Check Files
+
+```sh
+if [-f /bin/sysmgr];then
+echo file_exist
+fi
+```

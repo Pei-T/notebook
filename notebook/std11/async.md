@@ -16,8 +16,8 @@ std::async(std::launch::async, func, "Data")
     第一个参数决定异步执行还是同步执行
 |||
 |---|---
-|std::launch::async| 传递的可调用对象异步执行；
-|std::launch::deferred|传递的可调用对象同步执行；
+|std::launch::async| 调用时执行；
+|std::launch::deferred|获取结果时执行；
 |std::launch::async \| std::launch::deferred| 可以异步或是同步，取决于操作系统，我们无法控制；
 |default|则相当于(3)。
 ||
