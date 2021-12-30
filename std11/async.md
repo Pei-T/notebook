@@ -78,3 +78,16 @@ int main() {
     return 0;
 }
 ```
+```cpp{.line-numbers}
+
+auto _ = std::async(std::launch::async, [](){ 
+    while(true) cout << "async thread" <<endl; 
+});
+文件：
+
+  
+如果从std :: async获取的std :: future未被移动或绑定   对于一个引用，std :: future的析构函数将阻塞   完整表达式结束，直到异步操作完成，   基本上制作以下同步代码：
+
+     
+std :: async（std :: launch :: async，[] {f（）;}）; //临时的dtor等待   for f（）std :: async（std :: launch :: async，[] {g（）;}）; //没有开始   直到f（）完成
+```
