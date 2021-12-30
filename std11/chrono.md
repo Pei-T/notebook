@@ -43,5 +43,5 @@ template <intmax_t N, intmax_t D = 1> class ratio;
 ```cpp
 std::this_thread::sleep_for(std::chrono::seconds(3)); 
 std::this_thread::sleep_for(std::chrono:: milliseconds (100));
-std::this_thread::sleep_for(ratio<3600*24, 1>(1));
+std::this_thread::sleep_for(std::ratio<3600*24, 1>(1));
 ```

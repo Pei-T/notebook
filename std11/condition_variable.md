@@ -10,7 +10,7 @@ std::unique_lock<std::mutex> lck(mtx);
 cv.wait(lck,[]()->bool{});
 
 state = cv.wait_for(lck,std::chrono::second(1),[]()->bool{})
-if(state)
+if(state )//state ==0 time_over
     Func();
 else 
     TimeoverFunc();
