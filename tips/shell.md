@@ -44,4 +44,18 @@ cat /etc/ld.so.conf|grep /lib/sensorlib|wc -l
 if [-f /bin/sysmgr];then
 echo file_exist
 fi
+
+if [ -d /userdata/peiT ]; then
+    echo file_exist
+else
+    mkdir peiT
+fi
+```
+
+## 7 Run cmd in ssh
+```sh
+    ssh tangpei@10.97.100.38 -t '
+        cd /home/tangpei/sysmgr/src/sys-mgr
+        bash scopy.sh 
+    '
 ```
