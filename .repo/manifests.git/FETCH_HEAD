@@ -1,0 +1,14 @@
+e25418dae0f3666912d151915af0746163adb6a1		branch 'default' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+123cca729411eed0b10e526bb7ce6b4282cd9927		branch 'dev-j3-auto' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+43c188fc86a57721c1cb9662dcf7a832de698cae		branch 'feature-canno' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+e600e75d236891bd6b57f3214e29f0404198f6f7		branch 'feature-sync-dev-xj3' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+e600e75d236891bd6b57f3214e29f0404198f6f7		branch 'feature-sync-rel-br21' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+801776c78b61a1a7ec8a4ac6c69e40abb3475173		branch 'j3_auto_master' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+e600e75d236891bd6b57f3214e29f0404198f6f7		branch 'master' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+ddc613b3157625e0eb2ee128c4d8903f07c93a48		branch 'prj_rhode' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+1694ad26879dbef2ae3eb0e05ba75c183db7bbcd		branch 'shengteng_ft_j3' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+e53d171239e7642d221f4f08eadaaa91ac378493		branch 'streamax' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+c5867a3fcb2c50cfb50dab410248cc1d077957ed		branch 'test-cicd' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+c0496b1f81b22c5816ef2ad01bcf24bd85e77eaf	not-for-merge	tag 'test-cicd' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+c0496b1f81b22c5816ef2ad01bcf24bd85e77eaf	not-for-merge	tag 'test1' of gitlab.hobot.cc:auto/system/hobot-system/manifest
+ddc613b3157625e0eb2ee128c4d8903f07c93a48	not-for-merge	tag 'test2' of gitlab.hobot.cc:auto/system/hobot-system/manifest

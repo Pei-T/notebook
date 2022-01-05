@@ -1,0 +1,15 @@
+# pack-refs with: peeled fully-peeled sorted 
+e25418dae0f3666912d151915af0746163adb6a1 refs/remotes/origin/default
+123cca729411eed0b10e526bb7ce6b4282cd9927 refs/remotes/origin/dev-j3-auto
+43c188fc86a57721c1cb9662dcf7a832de698cae refs/remotes/origin/feature-canno
+e600e75d236891bd6b57f3214e29f0404198f6f7 refs/remotes/origin/feature-sync-dev-xj3
+e600e75d236891bd6b57f3214e29f0404198f6f7 refs/remotes/origin/feature-sync-rel-br21
+801776c78b61a1a7ec8a4ac6c69e40abb3475173 refs/remotes/origin/j3_auto_master
+e600e75d236891bd6b57f3214e29f0404198f6f7 refs/remotes/origin/master
+ddc613b3157625e0eb2ee128c4d8903f07c93a48 refs/remotes/origin/prj_rhode
+1694ad26879dbef2ae3eb0e05ba75c183db7bbcd refs/remotes/origin/shengteng_ft_j3
+e53d171239e7642d221f4f08eadaaa91ac378493 refs/remotes/origin/streamax
+c5867a3fcb2c50cfb50dab410248cc1d077957ed refs/remotes/origin/test-cicd
+c0496b1f81b22c5816ef2ad01bcf24bd85e77eaf refs/tags/test-cicd
+c0496b1f81b22c5816ef2ad01bcf24bd85e77eaf refs/tags/test1
+ddc613b3157625e0eb2ee128c4d8903f07c93a48 refs/tags/test2
