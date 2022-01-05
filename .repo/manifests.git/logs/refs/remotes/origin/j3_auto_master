@@ -1,1 +1,0 @@
-0000000000000000000000000000000000000000 801776c78b61a1a7ec8a4ac6c69e40abb3475173 pei.tang <pei.tang@horizon.ai> 1641371998 +0800	fetch --progress origin --tags +refs/heads/*:refs/remotes/origin/* +refs/heads/dev-j3-auto:refs/remotes/origin/dev-j3-auto: storing head
