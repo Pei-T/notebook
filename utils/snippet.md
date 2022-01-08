@@ -64,3 +64,79 @@ std::string GetJsonConfig(std::string json_path, std::string json_index) {
   return "";
 }
 ```
+## 3 Get Json Array
+```cpp
+std::vector<std::string> GetJsonArray(std::string json_path,
+                                      std::string json_index) {
+  Json::Value json_iter;
+  Json::CharReaderBuilder json_builder;
+  JSONCPP_STRING errs;
+  std::stringstream ss(json_index);
+  std::string iter_indx;
+  std::ifstream file_stream(json_path.c_str(), std::ios::in);
+  std::vector<std::string> res;
+  if (Json::parseFromStream(json_builder, file_stream, &json_iter, &errs)) {
+    while (ss >> iter_indx) {
+      json_iter = json_iter[iter_indx];
+    }
+    file_stream.close();
+    for (uint32_t i = 0; i < json_iter[iter_indx].size(); ++i) {
+      res.push_back(json_iter[iter_indx].asString());
+    }
+  }
+  file_stream.close();
+  return res;
+}
+```
+
+## 4 Get Json Value
+```cpp
+Json::Value GetJsonValue(std::string json_path, std::string json_index) {
+  Json::Value json_iter;
+  Json::CharReaderBuilder json_builder;
+  JSONCPP_STRING errs;
+  std::stringstream ss(json_index);
+  std::string iter_indx;
+  std::ifstream file_stream(json_path.c_str(), std::ios::in);
+  if (Json::parseFromStream(json_builder, file_stream, &json_iter, &errs)) {
+    while (ss >> iter_indx) {
+      json_iter = json_iter[iter_indx];
+    }
+    file_stream.close();
+  }
+  return json_iter;
+}
+```
+
+## 5 Replace string
+```cpp
+void ReplaceString(string &str, const string &old_value,
+                          const string &new_value) {
+  string::size_type pos(0);
+  while (true) {
+    if ((pos = str.find(old_value, pos)) != string::npos) {
+      str.replace(pos, old_value.length(), new_value);
+      pos += new_value.size();
+    } else {
+      break;
+    }
+  }
+  return;
+}
+void ReplaceFile(string path, string old, string now) {
+  fstream inputStream;
+  inputStream.open(path, ios::in);
+  string txt;
+  string c;
+  while (getline(inputStream, c)) {
+    replace_all(c, old, now);
+    txt += c;
+    txt += "\n";
+  }
+  inputStream.close();
+  fstream outputStream;
+  outputStream.open(path, ios::out);
+  outputStream << txt << endl;
+  outputStream.close();
+}
+```

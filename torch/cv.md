@@ -12,7 +12,9 @@ im = cv2.resize(im_orig, None, None, fx=im_scale, fy=im_scale, interpolation=cv2
 
 ## 2. show
 ```py
-cv2.imshow('resize_pic', im)
+# jupyter not support
+cv2.namedWindow("Image")#new window
+cv2.imshow('Image', im)
 ```
 
 ## 3. read

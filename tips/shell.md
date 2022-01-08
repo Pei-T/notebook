@@ -37,7 +37,28 @@ cat /etc/ld.so.conf|grep /lib/sensorlib|wc -l
 ```
 
 ## 5 Function
-
+```sh
+selectProjectType(){
+    echo "请选择项目类型:"
+    echo "1、test"
+    echo "2、super parking"
+    echo "3、super drive"
+    echo "回车、使用cmakelist里面的项目类型"
+    echo "请输入1-3中的任意整数或者直接回车:"
+    while true
+    do
+        read PROJECT_TYPE_NUMBER
+        if [ "$PROJECT_TYPE_NUMBER" == "" ];then
+            PROJECT_TYPE_NUMBER=99
+            break
+        elif (( $PROJECT_TYPE_NUMBER > 0 && $PROJECT_TYPE_NUMBER < 3 ));then
+            break
+        else
+            echo "请输入1-3中的任意整数或者直接回车:"
+        fi
+    done
+}
+```
 ## 6 Check Files
 
 ```sh
@@ -58,4 +79,13 @@ fi
         cd /home/tangpei/sysmgr/src/sys-mgr
         bash scopy.sh 
     '
+```
+
+## 8 Check Cmd lines
+
+```sh
+ps|grep local_sysmgr|wc -l
+# result should sub one;
+procrank|grep local_sysmgr|wc -l
+# result should not sub one;
 ```
