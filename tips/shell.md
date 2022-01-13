@@ -7,6 +7,7 @@ if [ $# == 1 ];then
     sorce_file="all"
     echo $1
 elif [ $# == 2 ];then
+    # $# -eq 2 按照数字比较
     echo $1
     echo $2
 fi
