@@ -30,13 +30,13 @@
 
 * 内核层消息的输入输出通过相应的通道送入IPC_worker，IPC_worker专门用来从事底层通信，比如直接调用libspi的read函数，zmq的pub、sub。
 
-* ProtocolHander提供拆分与打包的接口（序列化&反序列化）。通过模板将不同协议转换为状态机可读取的结构。
+* ProtocolHandler提供拆分与打包的接口（序列化&反序列化）。通过模板将不同协议转换为状态机可读取的结构。
 
-* IO_hander负责输入输出，主要是发送状态，发送ACK等工作。
+* IO_handler负责输入输出，主要是发送状态，发送ACK等工作。
 
-* SessionHander实现ack机制与超时重发。
+* SessionHandler实现ack机制与超时重发。
 
-* MessageDequeBuffer是输入输出消息的缓存区域，输出的队列有新消息时，相应的线程就会将它发送出去。同样的，有新的消息输入，也会有相应的线程处理消息。
+* MessageDequeueBuffer是输入输出消息的缓存区域，输出的队列有新消息时，相应的线程就会将它发送出去。同样的，有新的消息输入，也会有相应的线程处理消息。
 
 * 上层的APP们就可以通过libsysmgr.so和状态机通信，动态库集成了上面所有的类，用户只需要设置回调就可以了。
 
@@ -51,8 +51,8 @@ participant Normal_APP order 10
 participant Important_APP order 20
 participant Sysmgr order 30
 hnote over Sysmgr:Init
-Normal_APP-->Sysmgr:Registe
-Important_APP->Sysmgr:Registe
+Normal_APP-->Sysmgr:Register
+Important_APP->Sysmgr:Register
 hnote over Sysmgr:Normal
 
 ...
@@ -76,12 +76,12 @@ hnote over Sysmgr:State
 
 ## 1 Calibration 流程
 ```puml
-@startuml "statelfow"
+@startuml "stateFlow"
 !theme plain
 autonumber
-Adas->Sysmgr:Registe
+Adas->Sysmgr:Register
 hnote over Sysmgr:Normal
-Sysmgr->MCU:Sned State Normal
+Sysmgr->MCU:Send State Normal
 
 group Calibration
 MCU->MCU:Check Sysmgr state
@@ -92,12 +92,12 @@ Sysmgr->Adas:Send Request to Adas
 Adas->Adas:Do Calibration
 Adas->Sysmgr:J3B_adas_workflow\nSend Calibration Result
 hnote over Sysmgr:Calibration_Finish
-Sysmgr->MCU:Send State Calibration_Finish\nwith Restult
+Sysmgr->MCU:Send State Calibration_Finish\nwith Result
 end
 Adas->Adas:Restart
-Adas->Sysmgr:Registe
+Adas->Sysmgr:Register
 hnote over Sysmgr:Normal
-Sysmgr->MCU:Sned State Normal
+Sysmgr->MCU:Send State Normal
 @enduml
 ```
 
@@ -118,7 +118,7 @@ Sysmgr->MCU:Sned State Normal
 ## 2 OTA 流程
 
 ```puml
-@startuml "statelfow"
+@startuml "StateFlow"
 !theme plain
 autonumber
 participant APPs order 10
@@ -130,17 +130,17 @@ group OTA
 OtaService->Sysmgr:Request to OTA
 hnote over Sysmgr:OTA_PREPARE
 Sysmgr->Sysmgr:Start 5s timer
-group Not Timeover
+group Not Timeout
 Sysmgr->APPs:Request to OTA,Call Ota_callback.
 APPs->Sysmgr:Ota confirm
 hnote over Sysmgr:OTA
-Sysmgr->OtaService:confirm OTA state call the DO_OTA callbace
+Sysmgr->OtaService:confirm OTA state call the DO_OTA
 OtaService->OtaService: Do OTA
 end
-group Timeover 5s
+group Timeout 5s
 
 hnote over Sysmgr:OTA
-Sysmgr->OtaService:confirm OTA state call the DO_OTA callbace
+Sysmgr->OtaService:confirm OTA state call the DO_OTA
 OtaService->OtaService: Do OTA
 end
 end
@@ -157,7 +157,7 @@ end
 
 ## 3 下电流程
 ```puml
-@startuml "statelfow"
+@startuml "StateFlow"
 !theme plain
 autonumber
 !pragma teoz true
@@ -172,7 +172,7 @@ activate Sysmgr
 Sysmgr->Sysmgr:5s Timer
 hnote over Sysmgr:AFTERRUN
 Sysmgr->APPs:Request to SHUTDOWN,Call SHUTDOWN_callback.
-activate APPs
+activate APP
 deactivate Sysmgr
 APPs->>APPs:Prepare Shutdown
 group #LightBlue Not Timeover
@@ -192,7 +192,7 @@ end
 @enduml
 {start} <-> {end} :Max 5s
 ```
-1. 在**NORMAL**，**INIT**，**SYS_FAYLT**状态下，MCU向状态机请求下电。
+1. 在**NORMAL**，**INIT**，**SYS_FAULT**状态下，MCU向状态机请求下电。
 2. 状态机接收到请求后，立即进入AFTERRUN状态，并开启一个5s计时器。
 3. 状态机向APPs发送下电请求，并调用**shutdown_callback**
 4. 各APP完成下电工作后，向状态机确认下电。

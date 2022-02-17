@@ -1,0 +1,349 @@
+<!DOCTYPE html><html><head>
+      <title>sys_fault_ota</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////data/tangpei/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.6.1/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="67px" preserveAspectRatio="none" style="width:559px;height:67px;background:#FFFFFF;" version="1.1" viewBox="0 0 559 67" width="559px" zoomAndPan="magnify"><defs><filter height="300%" id="f1u8o1l4rjiybt" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[41e6af28bcbc7605320cdfe14d7598b2]
+entity SYS_FAULT--><rect fill="#FEFECE" filter="url(#f1u8o1l4rjiybt)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="117" x="7" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="104" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="102" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="102" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="22" y="39.9951">SYS_FAULT</text><ellipse cx="213.5937" cy="30.2277" fill="#FEFECE" filter="url(#f1u8o1l4rjiybt)" rx="54.0937" ry="14.7277" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="181.0937" y="33.9753">NORMAL</text><ellipse cx="375.5678" cy="30.0136" fill="#FEFECE" filter="url(#f1u8o1l4rjiybt)" rx="73.0678" ry="17.0136" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="322.0678" y="33.7611">OTA_PREPARE</text><ellipse cx="515.4914" cy="30.0236" fill="#FEFECE" filter="url(#f1u8o1l4rjiybt)" rx="31.9914" ry="14.5236" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="500.9914" y="32.8703">OTA</text><!--MD5=[fb92e6c529885bb724e6143ee96fb31d]
+link SYS_FAULT to NORMAL--><path d="M124.1797,30 C134.1826,30 144.1855,30 154.1885,30 " fill="none" id="SYS_FAULT-to-NORMAL" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="159.4193,30,150.4193,26,154.4193,30,150.4193,34,159.4193,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[9328eac36a1ceceb1b458ec2a5c6177b]
+link NORMAL to OTA_PREPARE--><path d="M267.6055,30 C277.4155,30 287.2255,30 297.0354,30 " fill="none" id="NORMAL-to-OTA_PREPARE" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="302.1654,30,293.1654,26,297.1654,30,293.1654,34,302.1654,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[85a609669860f3c13ea8e9603cedc404]
+link OTA_PREPARE to OTA--><path d="M448.5078,30 C458.3872,30 468.2666,30 478.146,30 " fill="none" id="OTA_PREPARE-to-OTA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="483.3123,30,474.3123,26,478.3123,30,474.3123,34,483.3123,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[2dc2974b0442db75e5fb20b42db234aa]
+@startuml
+[SYS_FAULT]->(NORMAL)
+(NORMAL)->(OTA_PREPARE)
+(OTA_PREPARE)->(OTA)
+@enduml
+
+PlantUML version 1.2021.12(Wed Oct 06 00:01:58 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p><p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="67px" preserveAspectRatio="none" style="width:558px;height:67px;background:#FFFFFF;" version="1.1" viewBox="0 0 558 67" width="558px" zoomAndPan="magnify"><defs><filter height="300%" id="f13b7v6sr007bj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="60.0937" cy="30.2277" fill="#FEFECE" filter="url(#f13b7v6sr007bj)" rx="54.0937" ry="14.7277" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="27.5937" y="33.9753">NORMAL</text><!--MD5=[41e6af28bcbc7605320cdfe14d7598b2]
+entity SYS_FAULT--><rect fill="#FEFECE" filter="url(#f13b7v6sr007bj)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="117" x="149.5" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="246.5" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="244.5" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="244.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="164.5" y="39.9951">SYS_FAULT</text><ellipse cx="375.0678" cy="30.0136" fill="#FEFECE" filter="url(#f13b7v6sr007bj)" rx="73.0678" ry="17.0136" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="321.5678" y="33.7611">OTA_PREPARE</text><ellipse cx="514.9914" cy="30.0236" fill="#FEFECE" filter="url(#f13b7v6sr007bj)" rx="31.9914" ry="14.5236" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="500.4914" y="32.8703">OTA</text><!--MD5=[719e6b8f59b296ae26bfcea5d1319171]
+link NORMAL to SYS_FAULT--><path d="M114.0547,30 C124.0547,30 134.0548,30 144.0548,30 " fill="none" id="NORMAL-to-SYS_FAULT" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="149.2842,30,140.2842,26,144.2842,30,140.2842,34,149.2842,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[68daddaca0309af41002c8914cd6d757]
+link SYS_FAULT to OTA_PREPARE--><path d="M266.7109,30 C276.6769,30 286.6428,30 296.6087,30 " fill="none" id="SYS_FAULT-to-OTA_PREPARE" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="301.8203,30,292.8203,26,296.8203,30,292.8203,34,301.8203,30" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[85a609669860f3c13ea8e9603cedc404]
+link OTA_PREPARE to OTA--><path d="M448.0078,30 C457.8872,30 467.7666,30 477.646,30 " fill="none" id="OTA_PREPARE-to-OTA" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="482.8123,30,473.8123,26,477.8123,30,473.8123,34,482.8123,30" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[244360121227bf067150933c754f2718]
+@startuml
+(NORMAL) -> [SYS_FAULT]
+[SYS_FAULT] .[#000000]right.> (OTA_PREPARE)
+(OTA_PREPARE) .[#000000]right.>(OTA)
+@enduml
+
+PlantUML version 1.2021.12(Wed Oct 06 00:01:58 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p><p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="67px" preserveAspectRatio="none" style="width:558px;height:67px;background:#FFFFFF;" version="1.1" viewBox="0 0 558 67" width="558px" zoomAndPan="magnify"><defs><filter height="300%" id="f1ak1x04k71305" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="60.0937" cy="30.2277" fill="#FEFECE" filter="url(#f1ak1x04k71305)" rx="54.0937" ry="14.7277" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="27.5937" y="33.9753">NORMAL</text><ellipse cx="222.0678" cy="30.0136" fill="#FEFECE" filter="url(#f1ak1x04k71305)" rx="73.0678" ry="17.0136" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="168.5678" y="33.7611">OTA_PREPARE</text><!--MD5=[41e6af28bcbc7605320cdfe14d7598b2]
+entity SYS_FAULT--><rect fill="#FEFECE" filter="url(#f1ak1x04k71305)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="117" x="330.5" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="427.5" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="425.5" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="425.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="345.5" y="39.9951">SYS_FAULT</text><ellipse cx="514.9914" cy="30.0236" fill="#FEFECE" filter="url(#f1ak1x04k71305)" rx="31.9914" ry="14.5236" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="500.4914" y="32.8703">OTA</text><!--MD5=[9328eac36a1ceceb1b458ec2a5c6177b]
+link NORMAL to OTA_PREPARE--><path d="M114.1055,30 C123.9155,30 133.7255,30 143.5354,30 " fill="none" id="NORMAL-to-OTA_PREPARE" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="148.6654,30,139.6654,26,143.6654,30,139.6654,34,148.6654,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a06bc159ea32b2e827e0221508b7bd18]
+link OTA_PREPARE to SYS_FAULT--><path d="M295.0625,30 C305.0617,30 315.0609,30 325.0601,30 " fill="none" id="OTA_PREPARE-to-SYS_FAULT" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="330.2891,30,321.2891,26,325.2891,30,321.2891,34,330.2891,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[4089b2035c88937e66e3b3ce1b197baa]
+link SYS_FAULT to OTA--><path d="M447.5703,30 C457.589,30 467.6077,30 477.6264,30 " fill="none" id="SYS_FAULT-to-OTA" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="482.8655,30,473.8655,26,477.8655,30,473.8655,34,482.8655,30" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[32e6932be9cc9caae7c4e1114e497abb]
+@startuml
+(NORMAL)->(OTA_PREPARE)
+(OTA_PREPARE)->[SYS_FAULT]
+[SYS_FAULT] .[#000000]right.>(OTA)
+@enduml
+
+PlantUML version 1.2021.12(Wed Oct 06 00:01:58 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p><p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="67px" preserveAspectRatio="none" style="width:560px;height:67px;background:#FFFFFF;" version="1.1" viewBox="0 0 560 67" width="560px" zoomAndPan="magnify"><defs><filter height="300%" id="f1mux8sac6a1by" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="60.0937" cy="30.2277" fill="#FEFECE" filter="url(#f1mux8sac6a1by)" rx="54.0937" ry="14.7277" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="27.5937" y="33.9753">NORMAL</text><ellipse cx="222.0678" cy="30.0136" fill="#FEFECE" filter="url(#f1mux8sac6a1by)" rx="73.0678" ry="17.0136" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="168.5678" y="33.7611">OTA_PREPARE</text><ellipse cx="361.9914" cy="30.0236" fill="#FEFECE" filter="url(#f1mux8sac6a1by)" rx="31.9914" ry="14.5236" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="347.4914" y="32.8703">OTA</text><!--MD5=[41e6af28bcbc7605320cdfe14d7598b2]
+entity SYS_FAULT--><rect fill="#FEFECE" filter="url(#f1mux8sac6a1by)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="117" x="429.5" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="526.5" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="524.5" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="524.5" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="444.5" y="39.9951">SYS_FAULT</text><!--MD5=[9328eac36a1ceceb1b458ec2a5c6177b]
+link NORMAL to OTA_PREPARE--><path d="M114.1055,30 C123.9155,30 133.7255,30 143.5354,30 " fill="none" id="NORMAL-to-OTA_PREPARE" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="148.6654,30,139.6654,26,143.6654,30,139.6654,34,148.6654,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[85a609669860f3c13ea8e9603cedc404]
+link OTA_PREPARE to OTA--><path d="M295.0078,30 C304.8872,30 314.7666,30 324.646,30 " fill="none" id="OTA_PREPARE-to-OTA" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="329.8123,30,320.8123,26,324.8123,30,320.8123,34,329.8123,30" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[085414c61e92f8563af7bfd7d3f3e78d]
+link OTA to SYS_FAULT--><path d="M394.4844,30 C404.335,30 414.1856,30 424.0362,30 " fill="none" id="OTA-to-SYS_FAULT" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#000000" points="429.1874,30,420.1874,26,424.1874,30,420.1874,34,429.1874,30" style="stroke:#000000;stroke-width:1.0;"/><!--MD5=[280346d33274191c83a17443bb7c90fe]
+@startuml
+(NORMAL)->(OTA_PREPARE)
+(OTA_PREPARE)->(OTA)
+(OTA) .[#000000]right.>[SYS_FAULT]
+@enduml
+
+PlantUML version 1.2021.12(Wed Oct 06 00:01:58 CST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
