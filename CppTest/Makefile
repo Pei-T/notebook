@@ -1,8 +1,10 @@
-CXX        = /usr/bin/g++
+# CXX = g++
+CXX = $(CROSS_COMPILE)g++
+AR = $(CROSS_COMPILE)ar
 CXXFLAGS   = -std=c++14 -fpermissive --coverage
-INCLUDE    = -I/usr/include
-LDFLAGS    = -L/usr/lib
-LIBS 	   = -Bstatic -lrt -ldl -lpthread -Bdynamic 
+INCLUDE    = -I/data/tangpei/new_repo/hbre/sys-mgr/master_control/src/system_statemachine/sysmgr_lib/
+LDFLAGS    = -L/data/tangpei/new_repo/hbre/sys-mgr/master_control/build/lib
+LIBS 	   = -Bstatic -lrt -ldl -lpthread -Bdynamic -lsysmgr -l
 
 SRCS      := main.cpp
 TARGET    := main
@@ -15,6 +17,7 @@ clean:
 	$(foreach file, $(SRCS),\
 		rm -rf $(patsubst  %.cpp, %, $(file));)
 
-install:
+
+ubuntu:
 	$(foreach file, $(SRCS),\
-		install $(patsubst  %.cpp, %, $(file)) ../output/;)
+		g++ -o $(patsubst  %.cpp, %, $(file)) $(CXXFLAGS) $(file) $(INCLUDE) $(LDFLAGS) $(LIBS) -DUBUNTU;)

@@ -1,0 +1,28 @@
+@startuml
+!theme plain
+participant Application1 order 10
+participant TriggerIn order 20
+participant StateManagement order 30
+participant TriggerOut order 40
+participant Application2 order 50
+
+Application2 -> TriggerOut :subscribe()
+
+Application1 -> TriggerIn : write()
+activate Application1
+activate TriggerIn
+deactivate Application1
+TriggerIn -> StateManagement : event()
+activate StateManagement
+deactivate TriggerIn
+StateManagement -> StateManagement : CheckGuardCondition(s)
+StateManagement -> TriggerOut : write(state)
+activate TriggerOut
+deactivate StateManagement
+TriggerOut -> Application2 : event()
+activate Application2
+Application2 -> Application2 : DoSomething
+deactivate TriggerOut
+activate Application2
+deactivate Application2
+@enduml

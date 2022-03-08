@@ -14,5 +14,9 @@
         "startuml",
         "SYSMGR",
         "Timeover"
-    ]
+    ],
+    "files.associations": {
+        "condition_variable": "cpp",
+        "chrono": "cpp"
+    }
 }

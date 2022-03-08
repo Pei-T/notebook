@@ -4,15 +4,14 @@
       "name": "linux",
       "includePath": [
         "${workspaceFolder}/**",
-        "/usr/include",
-        "/usr/local/include"
+        "/data/tangpei/new_repo/hbre/sys-mgr/master_control/src/system_statemachine/sysmgr_lib/"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/usr/bin/g++",
+      "compilerPath": "/data/tangpei/new_repo/prebuilts/host/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++",
       "cStandard": "c11",
       "cppStandard": "c++17",
       "intelliSenseMode": "clang-x86"
