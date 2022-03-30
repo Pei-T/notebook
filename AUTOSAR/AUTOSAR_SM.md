@@ -100,6 +100,109 @@ deactivate Application2
 ```
 
 ```puml
+@startuml
+!theme plain
+    SM->CommunicationGroup: PowerModeMsg
+        activate CommunicationGroup
+    CommunicationGroup->Proc1:PowerModeMsg(off)
+        activate Proc1
+    CommunicationGroup->Proc2:PowerModeMsg(off)
+        deactivate CommunicationGroup
+        activate Proc2
+    Proc1 ->CommunicationGroup:PowerModRespMsg(down)
+        deactivate Proc1
+        activate CommunicationGroup
+    CommunicationGroup-> SM:PowerModRespMsg(done,ID proc1)
+    Proc2 ->CommunicationGroup:PowerModRespMsg(down)
+        deactivate Proc2
+    CommunicationGroup-> SM:PowerModRespMsg(done,ID proc1)
+        deactivate CommunicationGroup
+    SM->CommunicationGroup:listClients()
+        activate CommunicationGroup
+    CommunicationGroup->SM:ID(Proc1,Proc2)
+        deactivate CommunicationGroup
+@enduml
+```
+```puml
+!theme plain
+participant App1 order 10
+participant TriggerIn order 20
+participant StateManagement order 30
+participant TriggerOut order 40
+participant IfcGetState order 50
+participant EM order 50
+participant IfcRequestState order 50
+App1 -> TriggerIn: Write()
+TriggerIn -> StateManagement:event()
+activate StateManagement
+StateManagement->StateManagement:check GuardCondition()
+StateManagement->TriggerOut:write(pre_state)
+StateManagement->IfcRequestState:SetState()
+IfcRequestState->EM
+EM->EM:SetFuncGroupState()
+StateManagement->IfcGetState:GetState()
+StateManagement->TriggerOut:write(final_state)
+```
+```puml
+!theme plain
+skinparam linetype ortho
+interface StateClient{
+    # *State*()
+    - GetExecutionError()
+    # GetInitialMachineStateTransitionResult()
+    # undefinedStateCallback()
+}
+interface ExecutionClient{
+    +ReportApplicationState()
+}
+component State_Management{
+}
+component Execution_Management{
+}
+component Process{
+}
 
+Execution_Management -up-> State_Management :start/\nterminal
+StateClient -down-> Execution_Management
+State_Management -down-> StateClient
+Process --down--> ExecutionClient
+ExecutionClient --down--> Execution_Management
+State_Management --right--> ExecutionClient
+Execution_Management--left--> Process:S/T
+```
+```puml
+!theme plain
+component StateManagement{
+}
+component NetworkManagement{
+}
+interface NetworkHandel{
+    +NetworkCurrentState()
+    +NetworkRequestState()
+}
+StateManagement --right--> NetworkHandel
+NetworkHandel --right--> NetworkManagement
 ```
 
+```puml
+skinparam linetype ortho
+component StateManagement{
+}
+component Process{
+
+}
+interface CommunicationGroupServer{
+    +BoardCast()
+    +ListClients()
+    +Message()
+    +Response()
+}
+interface CommunicationGroupClient{
+    +message()
+    +response()
+}
+() PowerModeMsg
+() PowerModeRespMsg
+PowerModeMsg --down--> Process
+Process --up--> PowerModeRespMsg
+```
