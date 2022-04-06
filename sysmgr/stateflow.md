@@ -73,7 +73,30 @@ deactivate Normal_APP
 end
 hnote over Sysmgr:State
 ```
-
+```puml
+!theme plain
+participant App1 order 10
+participant App2 order 20
+participant Sysmgr order 30
+App1 -> Sysmgr :Register()
+App2 -> Sysmgr :Register()
+group Transit State Loop
+Sysmgr <-:Request Entry SomeState
+activate Sysmgr
+Sysmgr -> Sysmgr :CheckCondition()
+Sysmgr -> App1: PubMessage()
+activate App1
+App1 -> App1 :DoSomething()
+Sysmgr -> App2: PubMessage()
+Activate App2
+App2 -> App2 :DoSomething()
+App1-> Sysmgr :Confirm()
+deactivate App1
+App2 -> Sysmgr : Confirm()
+deactivate App2 
+deactivate Sysmgr
+end
+```
 ## 1 Calibration 流程
 ```puml
 @startuml "stateFlow"
@@ -169,25 +192,20 @@ hnote over Sysmgr:SOME_STATE
 group Shutdown
 {start} MCU->Sysmgr:Request power_off
 activate Sysmgr
-Sysmgr->Sysmgr:5s Timer
+Sysmgr->Sysmgr:Timeout Timer
 hnote over Sysmgr:AFTERRUN
 Sysmgr->APPs:Request to SHUTDOWN,Call SHUTDOWN_callback.
-activate APP
+activate APPs
 deactivate Sysmgr
 APPs->>APPs:Prepare Shutdown
-group #LightBlue Not Timeover
+
+
 APPs->Sysmgr:shutdown confirm
 activate Sysmgr
 deactivate APPs
 hnote over Sysmgr:SHUTDOWN
-{end} Sysmgr->MCU:power_off confirm
+Sysmgr->MCU:power_off confirm
 deactivate Sysmgr
-else #pink Timeover 5s
-hnote over Sysmgr:SHUTDOWN
-Sysmgr->MCU:shutdown confirm
-end
-
-==Power Off==
 
 @enduml
 {start} <-> {end} :Max 5s

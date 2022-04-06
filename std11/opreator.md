@@ -15,3 +15,14 @@
 	}
 
 ```
+```cpp
+bool operator==(const Person& other)
+	{
+		std::cout << "call member function operator==" << std::endl;
+		if (this->m_age == other.m_age)
+		{
+			return true;
+		}
+		return false;
+	}
+```
