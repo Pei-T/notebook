@@ -11,7 +11,7 @@ class Res {
   }
 
   static Res OK() { return Res(); }
-  static Res Error(std::string err_msg) { Res(State::kError, err_msg); }
+  static Res Error(std::string err_msg) {return Res(State::kError, err_msg); }
 
   bool IsOk() { return sta_ == State::kOk; }
   bool IsErr() { return sta_ == State::kError; }

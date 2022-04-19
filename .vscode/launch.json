@@ -27,6 +27,27 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "main",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/tangpei/notebook/LibTest/libfuncs.so",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "/data/tangpei/notebook/LibTest",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/data/tangpei/CrossCompile/prebuilts/host/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gdb",
+            "miDebuggerServerAddress": "10.103.52.40:9900",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }

@@ -1,23 +1,45 @@
-# CXX = g++
-CXX = $(CROSS_COMPILE)g++
+CC = $(CROSS_COMPILE)g++
 AR = $(CROSS_COMPILE)ar
-CXXFLAGS   = -std=c++14 -fpermissive --coverage -g
-INCLUDE    = -I/home/tangpei/sysmgr/new_repo/hbre/sys-mgr/master_control/src/system_statemachine/sysmgr_lib/ -I ../utils
-LDFLAGS    = -L/home/tangpei/sysmgr/new_repo/hbre/sys-mgr/master_control/build/lib
-LIBS 	   = -Bstatic -lrt -ldl -lpthread -Bdynamic
 
-SRCS      := main.cpp
-TARGET    := main
+OUT_DIR = obj
+BIN_DIR = .
+SRC_DIR = .
+INC_DIR = ../utils
+LIB_DIR = ../LibTest
 
-all:
-	$(foreach file, $(SRCS),\
-		$(CXX) -o $(patsubst  %.cpp, %, $(file)) $(CXXFLAGS) $(file) $(INCLUDE) $(LDFLAGS) $(LIBS);)
+LIBS = -Bstatic -lfuncs -lpthread -Bdynamic
+CFLAGS = -g -Wall -I${INC_DIR}
+LDFLAGS = -L${LIB_DIR}
+
+TARGET = main
+
+.PHONY: directories default all clean
+
+MKDIR_P = mkdir -p
+default: directories ${BIN_DIR}/$(TARGET) Makefile
+directories: ${OUT_DIR} ${BIN_DIR}
+all: directories default
+
+${OUT_DIR}:
+	${MKDIR_P} ${OUT_DIR}
+
+${BIN_DIR}:
+	${MKDIR_P} ${BIN_DIR}
+
+SOURCES = $(wildcard ${SRC_DIR}/*.cpp)
+SOURCE_FILES = $(notdir ${SOURCES})
+OBJECTS = $(patsubst ${SRC_DIR}/%.cpp,${OUT_DIR}/%.o, ${SOURCES})
+HEADERS = $(wildcard ${INC_DIR}/*.h)
+
+${OUT_DIR}/%.o: ${SRC_DIR}/%.cpp $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PRECIOUS: $(TARGET) $(OBJECTS)
+
+${BIN_DIR}/$(TARGET): $(OBJECTS)
+	@echo "Start to build..."
+	$(CC) $(OBJECTS) ${LDFLAGS} -Wall $(LIBS) -o $@
 
 clean:
-	$(foreach file, $(SRCS),\
-		rm -rf $(patsubst  %.cpp, %, $(file));)
-
-
-ubuntu:
-	$(foreach file, $(SRCS),\
-		g++ -o $(patsubst  %.cpp, %, $(file)) $(CXXFLAGS) $(file) $(INCLUDE) $(LDFLAGS) $(LIBS) -DUBUNTU;)
+	-rm -f ${OUT_DIR}/*.o
+	-rm -f ${BIN_DIR}/$(TARGET)

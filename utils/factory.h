@@ -18,11 +18,21 @@
 
 #pragma once
 
+#include <stdio.h>
+
 #include <map>
 #include <memory>
-#include <utility>
-#include <stdio.h>
 #include <mutex>
+#include <utility>
+#define BUILD_UNIQUE_FACTORY(my_factory, constract_product)            \
+  my_factory =                                                         \
+      std::make_unique<common::Factory<std::string, constract_product, \
+                                       constract_product *(*)(void *)>>()
+
+#define DECLARE_UNIQUE_FACTORY(my_factory, constract_product)      \
+  std::unique_ptr<common::Factory<std::string, constract_product,  \
+                                  constract_product *(*)(void *)>> \
+      my_factory
 namespace common {
 
 /**
@@ -71,13 +81,9 @@ class Factory {
     return producers_.erase(id) == 1;
   }
 
-  void Clear() {
-    producers_.clear();
-  }
+  void Clear() { producers_.clear(); }
 
-  bool Empty() const {
-    return producers_.empty();
-  }
+  bool Empty() const { return producers_.empty(); }
 
   /**
    * @brief Creates and transfers membership of an object of type matching id.
