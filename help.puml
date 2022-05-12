@@ -1,0 +1,75 @@
+
+@startuml help
+!theme mars
+skinparam linetype ortho
+class SysContext{
+    -input_msg_queue_
+    +STMWorker()
+    +HandleSignal()
+}
+package "Communication Module" <<Folder>> {
+
+class Session{
+    +RecvInputMsg()
+    +SendOutputSignal()
+    +SendAck()
+}
+
+class OutputHandler{
+    +SendOutputSignal()
+}
+
+class InputHandler{
+    +RecvInputMsg()
+}
+
+class APPsProtocolHandler{
+    +WrapSignalToMsg()
+    +ExtractSignalFromMsg()
+}
+
+class IpcInterfaceOut{
+    +DoSendJob()
+}
+class IpcInterfaceIn{
+    +DoRecvJob()
+}
+
+class ZmqIpcImplOut{
+    +DoSendJob()
+}
+class ZmqIpcImplIn{
+    +DoBlockRecvJob()
+}
+package "AUTOSAR Interface"{
+interface In{
+    PowerModeMsg()
+    TriggerIn()
+}
+interface Out{
+    PowerModeRespMsg()
+    TriggerOut()
+}
+interface InOut{
+    TriggerInOut()
+}
+Session -up-* SysContext
+OutputHandler -left-* Session
+InputHandler -up-* Session
+IpcInterfaceOut -left-* OutputHandler
+ZmqIpcImplOut -left-|> IpcInterfaceOut
+APPsProtocolHandler -up-o OutputHandler
+APPsProtocolHandler -left-o InputHandler
+IpcInterfaceIn -up-* InputHandler
+ZmqIpcImplIn -left-|> IpcInterfaceIn
+
+In .left.|> ZmqIpcImplIn
+Out .up.|> ZmqIpcImplOut
+InOut .left.o In
+InOut .up.o Out
+
+
+}
+}
+
+@enduml

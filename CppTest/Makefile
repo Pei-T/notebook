@@ -5,10 +5,10 @@ OUT_DIR = obj
 BIN_DIR = .
 SRC_DIR = .
 INC_DIR = ../utils
-LIB_DIR = ../LibTest
-
-LIBS = -Bstatic -lfuncs -lpthread -Bdynamic
-CFLAGS = -g -Wall -I${INC_DIR}
+# LIB_DIR = ../LibTest
+LIB_DIR = .
+LIBS = -Bstatic  -lpthread -Bdynamic
+CFLAGS =  -g -Wall -I${INC_DIR}
 LDFLAGS = -L${LIB_DIR}
 
 TARGET = main
