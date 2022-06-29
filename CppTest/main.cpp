@@ -1,29 +1,48 @@
-#include <unistd.h>
 
-#include <algorithm>
+#include <functional>
 #include <iostream>
+#include <map>
 #include <string>
-#include <vector>
+enum PowerMode { kOn = 0, kOff };
+struct Diag {
+  int DiagId;
+  int DiagMsg;
+};
 
-// #include "../LibTest/funcs.hpp"
-// #include "factory.h"
-// #include "res.hpp"
-
-int func1(uint32_t a){
-  int b=0;
-  for(uint32_t i=0;i<a;i++){
-    b=a;
-    printf("hello %d\n",b);
-  }
-  return 1;
+std::map<std::string, std::function<void(void*)>> g_func_map;
+void SetCallback(std::string&& name, std::function<void(void*)>&& f) {
+  g_func_map[name] = f;
 }
+void SetPowerCallback(std::function<void(PowerMode)> f) {
+  std::function<void(void*)> tmp_func = [=](void* p) {
+    PowerMode power_mode = *((PowerMode*)p);
+    f(power_mode);
+  };
+  SetCallback("power", std::move(tmp_func));
+}
+void SetDiagCallback(std::function<void(Diag)> f) {
+  std::function<void(void*)> tmp_func = [=](void* p) {
+    Diag diag_msg = *((Diag*)p);
+    f(diag_msg);
+  };
+  SetCallback("diag", std::move(tmp_func));
+}
+
 int main() {
-  std::vector<std::string> data;
-  data.push_back("Hello");
-  data.push_back("world");
-  std::cout << data[0] << data[1] << std::endl;
-  func1(4);
-  int c=20;
-  auto tmp_str = data[2];
-  std::cout << tmp_str << std::endl;
+  std::function<void(PowerMode)> power_func = [](PowerMode power_mode) {
+    if (power_mode == kOn) {
+      printf("power_mode == kOn\n");
+    } else {
+      printf("power_mode == kOff\n");
+    }
+  };
+  std::function<void(Diag)> diag_func = [](Diag diag_msg) {
+    printf("DiagId:%d DiagMsg:%d \n", diag_msg.DiagId, diag_msg.DiagMsg);
+  };
+  SetPowerCallback(power_func);
+  SetDiagCallback(diag_func);
+  PowerMode tmp_mode = kOff;
+  Diag tmp_diag = {12, 23};
+  g_func_map["diag"](&tmp_diag);
+  g_func_map["power"](&tmp_mode);
 }

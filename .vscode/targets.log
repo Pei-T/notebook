@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May  8 11:31:18 2022
+# Make data base, printed on Tue Jun 21 16:08:33 2022
 
 # Variables
 
@@ -35,9 +35,9 @@ CURDIR := /data/tangpei/notebook
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_translationsConfigFile":"/data/tangpei/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/tcf.json","_cacheRoot":"/data/tangpei/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn","_resolvedLanguagePackCoreLocation":"/data/tangpei/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/57fd6d0195bb9b9d1b49f6da5db789060795de47","_corruptedFile":"/data/tangpei/.vscode-server/data/clp/a78078f10f99ab7adc9063c14c25e7ae.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_translationsConfigFile":"/data/tangpei/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/tcf.json","_cacheRoot":"/data/tangpei/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_resolvedLanguagePackCoreLocation":"/data/tangpei/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/data/tangpei/.vscode-server/data/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /data/tangpei/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/node
+_ = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
 # makefile
 MAKEFILE_LIST := 
 # 'override' directive
@@ -57,9 +57,9 @@ LC_NAME = zh_CN.UTF-8
 # environment
 VSCODE_CWD = /data/tangpei
 # environment
-SSH_CONNECTION = 10.55.0.102 61474 10.97.32.229 22
+SSH_CONNECTION = 10.97.96.41 54288 10.97.32.229 22
 # environment
-PATH = /data/tangpei/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/bin/remote-cli:/data/tangpei/bin:/data/tangpei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/data/common/arc_tools/arcanist/bin
+PATH = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/data/tangpei/bin:/data/tangpei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/data/common/arc_tools/arcanist/bin
 # environment
 XDG_RUNTIME_DIR = /run/user/1036
 # environment
@@ -79,7 +79,7 @@ PWD = /data/tangpei/notebook
 # environment
 QT_QPA_PLATFORMTHEME = appmenu-qt5
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1036/vscode-ipc-2f098302-5283-47ba-8552-9a565b5cf0a4.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1036/vscode-ipc-d09ab837-5a07-4ac6-96d1-d4f7735a4523.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -107,7 +107,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 3
 # environment
-XDG_SESSION_ID = 107913
+XDG_SESSION_ID = 189865
 # environment
 USER = tangpei
 # environment
@@ -118,9 +118,10 @@ LC_MONETARY = zh_CN.UTF-8
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 LC_TELEPHONE = zh_CN.UTF-8
- 
 # default
 MAKE_COMMAND := make
+# environment
+OLDPWD = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630
 # default
 .VARIABLES := 
 # automatic
@@ -130,13 +131,13 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.55.0.102 61474 22
+SSH_CLIENT = 10.97.96.41 54288 22
 # environment
 MAIL = /var/mail/tangpei
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
-BROWSER = /data/tangpei/.vscode-server/bin/57fd6d0195bb9b9d1b49f6da5db789060795de47/bin/helpers/browser.sh
+BROWSER = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/helpers/browser.sh
 # environment
 S_COLORS = auto
 # environment
@@ -170,7 +171,7 @@ LANG = C
 # environment
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=12/100=12%
+# Load=79/1024=8%, Rehash=0, Collisions=12/101=12%
 
 # Pattern-specific Variable Values
 
@@ -178,9 +179,9 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 
 # Directories
 
-# . (device 2065, inode 7927252): 21 files, no impossibilities.
+# . (device 2065, inode 7927252): 22 files, no impossibilities.
 
-# 21 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -230,12 +231,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 223 B / avg = 7 B
-# current buf: size = 8162 B / used = 223 B / count = 29 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 232 B / avg = 7 B
+# current buf: size = 8162 B / used = 232 B / count = 30 / avg = 7 B
 
-# strcache performance: lookups = 32 / hit rate = 9%
+# strcache performance: lookups = 33 / hit rate = 9%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=1/32=3%
-# Finished Make data base on Sun May  8 11:31:18 2022
+# Load=30/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Tue Jun 21 16:08:33 2022
 
  
