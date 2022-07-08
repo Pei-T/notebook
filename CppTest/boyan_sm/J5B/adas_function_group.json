@@ -1,0 +1,59 @@
+{
+  "FunctionGroupName": "AdasFG",
+  "State": [
+    {
+      "StateName": "Running",
+      "Event":"AdasFG-Running",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["SM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Calibration",
+      "Event":"AdasFG-Calibration",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "AdasFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["MCU"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Stop",
+      "Event":"AdasFG-Stop",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["SM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Undefined",
+      "Event":"AdasFG-Undefined",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["EM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    }
+  ]
+}

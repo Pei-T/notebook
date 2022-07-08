@@ -1,0 +1,5 @@
+{
+    tool_platform_linux_x86_64_cxx = {
+        program = "g++"
+    }
+}

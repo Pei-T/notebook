@@ -1,0 +1,75 @@
+{
+  "FunctionGroupName": "AdasFG",
+  "State": [
+    {
+      "StateName": "Driving",
+      "Event":"AdasFG-Driving",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["SM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Parking",
+      "Event":"AdasFG-Parking",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["SM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Calibration",
+      "Event":"AdasFG-Calibration",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["MCU"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Stop",
+      "Event":"AdasFG-Stop",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["SM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Undefined",
+      "Event":"AdasFG-Undefined",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["EM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    }
+  ]
+}

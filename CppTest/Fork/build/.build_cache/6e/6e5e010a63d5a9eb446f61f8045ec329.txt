@@ -1,0 +1,9 @@
+{
+    errdata = "In file included from \27[01m\27[Kmain.cpp:9\27[m\27[K:\
+Fork.hpp: In instantiation of ‘\27[01m\27[KFork::Fork(F&&, A&& ...) [with F = int (&)(int, int); A = {int, int}]\27[m\27[K’:\
+\27[01m\27[Kmain.cpp:15:21:\27[m\27[K   required from here\
+\27[01m\27[KFork.hpp:21:14:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[Ktoo many arguments for format [\27[01;35m\27[K-Wformat-extra-args\27[m\27[K]\
+   21 |       printf(\27[01;35m\27[K\"\\n\\nChild process.Call f(args...).\\n\"\27[m\27[K, pid_);\
+      |              \27[01;35m\27[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\27[m\27[K\
+"
+}

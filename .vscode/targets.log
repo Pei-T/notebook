@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 21 16:08:33 2022
+# Make data base, printed on Fri Jul  1 10:18:06 2022
 
 # Variables
 
@@ -57,7 +57,7 @@ LC_NAME = zh_CN.UTF-8
 # environment
 VSCODE_CWD = /data/tangpei
 # environment
-SSH_CONNECTION = 10.97.96.41 54288 10.97.32.229 22
+SSH_CONNECTION = 10.97.96.41 51906 10.97.32.229 22
 # environment
 PATH = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/data/tangpei/bin:/data/tangpei/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/data/common/arc_tools/arcanist/bin
 # environment
@@ -79,7 +79,7 @@ PWD = /data/tangpei/notebook
 # environment
 QT_QPA_PLATFORMTHEME = appmenu-qt5
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1036/vscode-ipc-d09ab837-5a07-4ac6-96d1-d4f7735a4523.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1036/vscode-ipc-c4894c11-dde4-44f6-90a2-62deddcbacf4.sock
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -91,7 +91,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = tangpei
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 +F = $(notdir $+)
 # environment
@@ -107,7 +107,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 3
 # environment
-XDG_SESSION_ID = 189865
+XDG_SESSION_ID = 209724
 # environment
 USER = tangpei
 # environment
@@ -120,8 +120,6 @@ LC_MONETARY = zh_CN.UTF-8
 LC_TELEPHONE = zh_CN.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /data/tangpei/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630
 # default
 .VARIABLES := 
 # automatic
@@ -131,7 +129,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.97.96.41 54288 22
+SSH_CLIENT = 10.97.96.41 51906 22
 # environment
 MAIL = /var/mail/tangpei
 # automatic
@@ -171,7 +169,7 @@ LANG = C
 # environment
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # variable set hash-table stats:
-# Load=79/1024=8%, Rehash=0, Collisions=12/101=12%
+# Load=78/1024=8%, Rehash=0, Collisions=12/100=12%
 
 # Pattern-specific Variable Values
 
@@ -237,6 +235,6 @@ GNUmakefile:
 # strcache performance: lookups = 33 / hit rate = 9%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=1/33=3%
-# Finished Make data base on Tue Jun 21 16:08:33 2022
+# Finished Make data base on Fri Jul  1 10:18:06 2022
 
  

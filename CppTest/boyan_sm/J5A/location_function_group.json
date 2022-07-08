@@ -1,0 +1,70 @@
+{
+  "FunctionGroupName": "LocationFG",
+  "State": [
+    {
+      "StateName": "Running",
+      "Event":"LocationFG-Running",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Dota",
+      "Event":"LocationFG-Dota",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Stop",
+      "Event":"LocationFG-Stop",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "Undefined",
+      "Event":"LocationFG-Undefined",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["EM"]
+      },
+      "Action": {
+        "AutoSwitch": [
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "LocationFG",
+            "State": "Stop"
+          }
+        ]
+      }
+    }
+  ]
+}

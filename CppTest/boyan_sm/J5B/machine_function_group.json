@@ -1,0 +1,160 @@
+{
+  "FunctionGroupName": "MachineFG",
+  "States": [
+    {
+      "StateName": "Start",
+      "Event":"MachineFG-Start",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": []
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": [
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "MachineFG",
+            "State": "Running"
+          },
+          {
+            "TimeDelay": 500,
+            "FunctionGroupName": "AdasFG",
+            "State": "Running"
+          },
+          {
+            "TimeDelay": 500,
+            "FunctionGroupName": "LocationFG",
+            "State": "Running"
+          }
+        ]
+      }
+    },
+    {
+      "StateName": "Running",
+      "Event":"MachineFG-Running",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Starting", "Fault", "OTA", "PowerOff"]
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    },
+    {
+      "StateName": "PowerOff",
+      "Event":"MachineFG-PowerOff",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Init", "Starting", "Running", "Fault"]
+          }
+        ],
+        "SourceAppName": []
+      },
+      "Action": {
+        "AutoSwitch": [
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "MachineFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "AdasFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "LocationFG",
+            "State": "Stop"
+          }
+        ]
+      }
+    },
+    {
+      "StateName": "Fault",
+      "Event":"MachineFG-Fault",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Init", "Starting", "Running"]
+          }
+        ],
+        "SourceAppName": ["Diag"]
+      },
+      "Action": {
+        "AutoSwitch": [
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "MachineFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "AdasFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "LocationFG",
+            "State": "Stop"
+          }
+        ]
+      }
+    },
+    {
+      "StateName": "OTA",
+      "Event":"MachineFG-OTA",
+      "Condition": {
+        "PreviousState": [
+          {
+            "FunctionGroupName": "MachineFG",
+            "StateName": ["Running"]
+          }
+        ],
+        "SourceAppName": ["OTA"]
+      },
+      "Action": {
+        "AutoSwitch": [
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "MachineFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "AdasFG",
+            "State": "Stop"
+          },
+          {
+            "TimeDelay": 0,
+            "FunctionGroupName": "LocationFG",
+            "State": "Stop"
+          }
+        ]
+      }
+    },
+    {
+      "StateName": "Undefined",
+      "Event":"MachineFG-Undefined",
+      "Condition": {
+        "PreviousState": [],
+        "SourceAppName": ["EM"]
+      },
+      "Action": {
+        "AutoSwitch": []
+      }
+    }
+  ]
+}

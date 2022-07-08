@@ -1,0 +1,15 @@
+{
+    options = {
+        cxx = "g++",
+        mode = "debug",
+        toolchain = "gcc-9",
+        plat = "linux",
+        arch = "x86_64"
+    },
+    mtimes = {
+        ["xmake.lua"] = 1656396539,
+        ["example/xmake.lua"] = 1655873501,
+        ["test/xmake.lua"] = 1655818284
+    },
+    recheck = false
+}
