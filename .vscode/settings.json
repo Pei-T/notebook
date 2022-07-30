@@ -68,6 +68,22 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "unordered_set": "cpp",
-        "cerrno": "cpp"
+        "cerrno": "cpp",
+        "version": "cpp",
+        "*.ipp": "cpp",
+        "csignal": "cpp",
+        "cstring": "cpp",
+        "any": "cpp",
+        "bit": "cpp",
+        "bitset": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "optional": "cpp",
+        "source_location": "cpp",
+        "string_view": "cpp",
+        "iomanip": "cpp",
+        "cinttypes": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     }
 }
