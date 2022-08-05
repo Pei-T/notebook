@@ -8,11 +8,12 @@
 #define ERR printf
 #include <string>
 
-#include "/data/tangpei/new_repo/hbre/sys-mgr/master_control/third_party/zmq/zmq.h"
+#include "/home/pei.tang/.local/include/zmq.h"
 struct ZmqArgs {
   enum MODE { kBind, kConnect } mode;
   std::string AddressPath;
 };
+
 
 class ZmqPub final {
  private:

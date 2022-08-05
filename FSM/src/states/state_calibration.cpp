@@ -13,7 +13,7 @@ class Calibration : public State {
   int CheckCondition() { return 0; };
   int HandleMessage(void* data) { return 0; };
   int Info() {
-    LOG_INFO("This is Calibration State。\n");
+    LOG_INFO("This is Calibration State.\n");
     return 0;
   }
 };
