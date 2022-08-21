@@ -1,0 +1,12 @@
+{
+    tool_target_test_linux_x86_64_cxx = {
+        program = "/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++",
+        toolname = "gxx",
+        toolchain_info = {
+            arch = "x86_64",
+            name = "envs",
+            cachekey = "envs_arch_x86_64_plat_linux",
+            plat = "linux"
+        }
+    }
+}

@@ -3,104 +3,106 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <iostream>
+#include <memory>
+#include <sstream>
 #include <string>
 
 #define redis_context redisContext
 #define redis_reply redisReply
+#include <random>
+std::random_device rd;  // rd();
+template <class T>
+class RedisQueue {
+ private:
+  redis_context *conn_;
+  std::string key_;
 
-struct RedisArgs {
-  std::string Addr;
-  uint32_t Port;
-  std::string ID;
-  std::string Password;
-};
-
-class RedisClient : public enable_shared_from_this<RedisClient> {
  public:
-  RedisClient()
-      : args_({"0.0.0.0", 6379, {1, 0}, "", ""}), state_(kUnConnect) {}
-  RedisClient(RedisArgs args) : args_(args), state_(kUnConnect) {}
-
-  RedisClient(const RedisClient &redis_client) = delete;
-  RedisClient(RedisClient &&redis_client) = delete;
-  RedisClient &operator=(const RedisClient &redis_client) = delete;
-
-  ~RedisClient() { redisFree(conn_); }
-
-  enum RedisState { kError = -1, kUnConnect, kDone };
-  RedisState State() { return state_; }
-
-  shared_ptr<RedisClient> SharedPtr() { return shared_from_this(); }
-
-  bool Connect() {
-    conn_ = redisConnect(hostname, port, timeout);
-    if (conn_ == NULL || conn_->err) {
-      if (conn_) {
-        printf("Connection error: %s\n", conn_->errstr);
-        redisFree(conn_);
-      } else {
-        printf("Connection error: can't allocate redis context\n");
-      }
-      state_ = kError;
+  RedisQueue(redis_context *conn, std::string key) : conn_(conn), key_(key) {}
+  ~RedisQueue() {}
+  bool LeftPush(T data) {
+    auto reply = redisCommand(conn_, "LPUSH %s %s", key_.c_str(),
+                              std::to_string(data).c_str());
+    if (reply == NULL) {
       return false;
     }
-    state_ = kDone;
     return true;
   }
-  bool IdConfirm() {
-    reply =
-        redisCommand(conn, "%s %s", args_.ID.c_str(), args_.Password.c_str());
-    if (!reply) {
-      printf("AUTH: %s\n", (redis_reply *)reply->str);
-      freeReplyObject(reply);
-    } else {
-      printf("ID Wrong\n");
+  bool RightPush(T data) {
+    auto reply = redisCommand(conn_, "RPUSH %s %s", key_.c_str(),
+                              std::to_string(data).c_str());
+    if (reply == NULL) {
+      return false;
     }
+    return true;
   }
-  redis_reply *Command(std::string cmd) {
-    return (redis_reply *)redisCommand(conn, cmd.c_str());
+  bool LeftPop(T &data) {
+    auto reply = (redisReply *)redisCommand(conn_, "LPOP %s", key_.c_str());
+    if (reply == NULL) return false;
+    // #include <sstream>
+    std::stringstream ss(reply->str);
+    ss >> data;
+    return true;
   }
-
- private:
-  RedisState state_;
-  redisContext *conn_;
-  redisReply *reply_;
-  RedisArgs args_;
+  bool RightPop(T &data) {
+    auto reply = (redisReply *)redisCommand(conn_, "RPOP %s", key_.c_str());
+    if (reply == NULL) return false;
+    // #include <sstream>
+    std::stringstream ss(reply->str);
+    ss >> data;
+    return true;
+  }
 };
 
 template <class T>
-class RedisDeque {
-  RedisDeque() : name_("defaule:queue") {}
-  RedisDeque(std::string name) : name_(name) {}
-  RedisDeque(std::string name, RedisArgs args) : name_(name), args_(args) {}
-  bool LPush(T obj) {}
-  bool RPush(T obj) {}
-  T LPop() {}
-  T RPop() {}
-
+class RedisObj {
  private:
-  std::string name_;
-  RedisArgs args_;
-  std::shared_ptr<RedisClient> sp_redis_client_;
-};
+  redis_context *conn_;
+  std::string key_;
 
+ public:
+  RedisObj(redis_context *conn, std::string key) : conn_(conn), key_(key) {}
+  ~RedisObj() {}
+  bool Set(const T &obj) {
+    auto reply = redisCommand(conn_, "SET %s %s", key_.c_str(),
+                              std::to_string(obj).c_str());
+    if (reply == NULL) {
+      return false;
+    }
+    return true;
+  }
+  bool Get(T &obj) {
+    auto reply = (redisReply *)redisCommand(conn_, "GET %s", key_.c_str());
+    if (reply == NULL) return false;
+    // #include <sstream>
+    std::stringstream ss(reply->str);
+    ss >> obj;
+    return true;
+  }
+};
+int Func(redis_context *p) {
+  printf("HelloWorld\n");
+  RedisObj<int> redis_obj(p, "Obj:test");
+  int tmp = 90;
+  redis_obj.Set(tmp);
+  tmp = 0;
+  redis_obj.Get(tmp);
+  std::cout << tmp << std::endl;
+  return 0;
+}
+// Hello Redis
 int main(int argc, char **argv) {
   struct timeval timeout;
   redis_context *conn;
   redis_reply *reply;
   char *hostname;
-  char *password;
   int port;
-  int j;
+  // char *password;
+  // password = const_cast<char *>("");
 
-  if (argc < 3) {
-    printf("Usage: example {instance_ip_address} 6379 {password}\n");
-    return (0);
-  }
-
-  hostname = argv[1];
-  port = std::atoi(argv[2]);
-  password = argv[3];
+  hostname = const_cast<char *>("0.0.0.0");
+  port = 6379;
   timeout.tv_sec = 1;
   timeout.tv_usec = 500000;
 
@@ -113,7 +115,6 @@ int main(int argc, char **argv) {
     } else {
       printf("Connection error: can't allocate redis context\n");
     }
-
     exit(1);
   }
 
@@ -127,7 +128,7 @@ int main(int argc, char **argv) {
                                      "Hello, DCS for Redis!");
   printf("SET: %s\n", reply->str);
   freeReplyObject(reply);
-
+  Func(conn);
   /*获取变量值*/
   reply = (redisReply *)redisCommand(conn, "GET welcome");
   printf("GET welcome: %s\n", reply->str);

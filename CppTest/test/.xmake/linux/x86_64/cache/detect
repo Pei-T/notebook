@@ -1,0 +1,57 @@
+{
+    find_program_envs_arch_x86_64_plat_linux_checktoolcxx = {
+        ["/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++"] = "/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++"
+    },
+    ["lib.detect.has_flags"] = {
+        ["linux_x86_64_/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++_6.5-2018.12_cxx_cxflags__-fPIC"] = true,
+        ["linux_x86_64_/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++_6.5-2018.12_cxx_cxflags__-MMD -MF"] = true,
+        ["linux_x86_64_/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++_6.5-2018.12_cxx_cxflags__-fdiagnostics-color=always"] = true
+    },
+    find_program = {
+        ldc2 = false,
+        gcc = "/usr/bin/gcc",
+        gdc = false,
+        ["/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++"] = "/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++",
+        dmd = false,
+        zig = false
+    },
+    ["detect.tools.gcc.has_cflags"] = {
+        ["/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++_6.5-2018.12"] = {
+            ["--param"] = true,
+            ["-save-temps"] = true,
+            ["-pipe"] = true,
+            ["-no-canonical-prefixes"] = true,
+            ["-pass-exit-codes"] = true,
+            ["-print-multiarch"] = true,
+            ["-c"] = true,
+            ["--target-help"] = true,
+            ["-print-libgcc-file-name"] = true,
+            ["-shared"] = true,
+            ["-E"] = true,
+            ["-S"] = true,
+            ["-print-multi-os-directory"] = true,
+            ["-pie"] = true,
+            ["-dumpversion"] = true,
+            ["-Xassembler"] = true,
+            ["-v"] = true,
+            ["-o"] = true,
+            ["--version"] = true,
+            ["-print-multi-directory"] = true,
+            ["-dumpspecs"] = true,
+            ["-print-sysroot-headers-suffix"] = true,
+            ["--help"] = true,
+            ["-dumpmachine"] = true,
+            ["-time"] = true,
+            ["-Xlinker"] = true,
+            ["-print-sysroot"] = true,
+            ["-x"] = true,
+            ["-print-multi-lib"] = true,
+            ["-Xpreprocessor"] = true,
+            ["-print-search-dirs"] = true,
+            ["-B"] = true
+        }
+    },
+    find_programver = {
+        ["/home/pei.tang/cross_build/gcc-linaro-6.5.0-2018.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++"] = "6.5-2018.12"
+    }
+}
