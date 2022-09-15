@@ -1,7 +1,6 @@
-class Test:
-    def __init__ (self):
-        pass
-    def func(self):
-        print("Hello")
-t=Test()
-t.func()
+"""
+ Copyright (C) Horizon Robotics, Inc. - All Rights Reserved
+ Unauthorized copying of this file, via any medium is strictly prohibited
+ Proprietary and confidential
+"""
+

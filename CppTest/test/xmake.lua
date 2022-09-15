@@ -1,7 +1,0 @@
-target("test")
-    set_kind("binary")
-    add_files("*.cpp")
-    add_includedirs("~/.local/include")
-    add_linkdirs("~/.local/lib")
-    add_syslinks("pthread")
-    -- add_links("gtest")

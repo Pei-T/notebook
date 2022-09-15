@@ -1,8 +1,0 @@
-{
-  "CentreSMAddress": "192.168.2.10",
-  "FunctionGroupFiles": [
-    "machine_function_group.json",
-    "adas_function_group.json",
-    "location_function_group.json"
-  ]
-}
