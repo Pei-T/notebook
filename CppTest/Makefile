@@ -4,7 +4,7 @@
 
 ROOTDIR    = ./
 CXX        = $(CROSS_COMPILE)g++
-CXXFLAGS   = -std=c++14 -g -Wall -pg -fconcepts
+CXXFLAGS   = -std=c++14 -g -Wall -fconcepts
 INCLUDE    = -I/home/pei.tang/.local/include/ -I$(ROOTDIR)
 LDFLAGS    = -L$(ROOTDIR)
 LIBS       = -lpthread -lone

@@ -1,0 +1,7 @@
+Starting program: /home/pei.tang/notebook/CppTest/test 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at main.cpp:37
+37	{
+38	    srand(time(NULL));

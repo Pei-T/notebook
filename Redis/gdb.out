@@ -1,0 +1,51 @@
+Starting program: /home/pei.tang/notebook/Redis/test 
+[Inferior 1 (process 2669452) exited normally]
+Breakpoint 1 at 0x5555555567c8: file hiredis.cpp, line 95.
+Starting program: /home/pei.tang/notebook/Redis/test 
+
+Breakpoint 1, main (argc=21845, argv=0x7fffffffdea0) at hiredis.cpp:95
+redisConnectWithTimeout (ip=0x55555555802e "0.0.0.0", port=6379, tv=...) at hiredis.c:857
+redisConnectWithOptions (options=options@entry=0x7fffffffde20) at hiredis.c:792
+__libc_calloc (n=1, elem_size=272) at malloc.c:3366
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+[Inferior 1 (process 2669550) exited normally]
+Starting program: /home/pei.tang/notebook/Redis/test 
+
+Breakpoint 1, main (argc=21845, argv=0x7fffffffdea0) at hiredis.cpp:95
+redisCommand (c=0x55555556f980, format=0x55555555809d "SET %s %s") at hiredis.c:1176
+main (argc=1, argv=0x7fffffffdfd8) at hiredis.cpp:129
+redisCommand (c=0x55555556f980, format=0x5555555580b0 "GET welcome") at hiredis.c:1176
+main (argc=1, argv=0x7fffffffdfd8) at hiredis.cpp:134
+redisFree (c=0x55555556f980) at hiredis.c:719
+__GI___libc_free (mem=0x55555556f980) at malloc.c:3087
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+[Inferior 1 (process 2673104) exited normally]
+The program is not being run.
+The program is not being run.
+redisConnectWithTimeout (ip=0x55555555802e "0.0.0.0", port=6379, tv=...) at hiredis.c:857
+#0  redisConnectWithTimeout (ip=0x55555555802e "0.0.0.0", port=6379, tv=...) at hiredis.c:857
+#1  0x000055555555682c in main (argc=1, argv=0x7fffffffdfd8) at hiredis.cpp:110
+main (argc=1, argv=0x7fffffffdfd8) at hiredis.cpp:111
+freeReplyObject (reply=0x555555570060) at hiredis.c:90
+#0  freeReplyObject (reply=0x555555570060) at hiredis.c:90
+#1  0x00005555555568db in main (argc=1, argv=0x7fffffffdfd8) at hiredis.cpp:130
+__GI___libc_free (mem=0x555555570060) at malloc.c:3087
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+malloc.c: No such file or directory.
+[Inferior 1 (process 3667885) exited normally]
